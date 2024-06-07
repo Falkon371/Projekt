@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To do List</title>
+    <link rel="stylesheet" href="pastStyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="fontello-6ba16df1/css/fontello.css">
+    <style>
+    .cont{
+        position: relative;
+        width: 20px;
+        height: 20px;
+        margin-left: 26px;
+    }
+
+    #te{
+        position: absolute;
+        color: #000000;
+        transition: opacity 0.5s ease, top 1s ease;
+        text-align: left;
+    }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar hidden" id="sidebar">
+
+        <div class="upSide">
+          
+          <div class="user">
+            <i class="icon-user"></i>
+            <p>Toby Fox</p>
+          </div>
+      
+          <div class="przy toggleSidebar">
+            <i class="icon-th-list"  style=" cursor: pointer;"></i>
+          </div>
+    
+        </div>
+      
+        <div class="NewZad" onclick="ukryjDiv()">
+            <i class="icon-ok-circled"></i>
+            <p>Dodaj zadanie</p>
+        </div>
+
+        <div class="sid" href="past.html">
+            <a href="past.html">
+                <i class="icon-calendar-empty"></i>
+                <p>Zaległe</p>
+            </a>
+        </div>
+    
+        <div class="sid">
+            <a href="index.html">
+                <i class="icon-calendar-empty"></i>
+                <p>Dzisiaj</p>
+            </a>
+        </div>
+    
+        <div class="sid">
+            <a href="future.html">
+                <i class="icon-calendar-empty"></i>
+                <p>Następne</p>
+            </a>
+        </div>
+    
+      </div>
+
+    <div class="container">
+    
+        <div class="gora">
+            <i class="icon-th-list" style="font-size: 25px;"></i>
+            <i class="icon-params" style="font-size: 25px;"></i>
+        </div>
+
+        <div class="podstawy">
+            <h1>Dziś</h1>
+            <div class="cont">
+                <p id="te">0</p>
+            </div>
+         
+            <i class="icon-ok-circled" ></i>
+            <p id="iloscZadan"></p>
+        </div>
+
+        <div class="zaległe">
+            <i class="icon-right-open" onclick="ukryjUL()"></i>    
+            <div class="zallinia" >
+                <h3>Zaległe</h3>
+            </div>
+        </div>
+
+        <div class="liZadan hidden" >
+            <ul class="tasks" >
+    
+               
+
+            </ul>
+        </div>
+
+        <div class="main">
+            <div class="cal">
+                <p id="currentDate">ui</p>
+            </div>
+        </div>
+
+        <div class="NoweZadanie" onclick="ukryjDiv()">
+            <i class="icon-ok-circled"></i>
+            <p>Dodaj zadanie</p>
+        </div>
+
+    </div>
+
+    <div class="addZad" >
+        <p id="textNZ"></p>
+        <p id="textOpis"></p>
+    
+        <div class="Pudlo hidden">
+            <div class="inputs">
+                <input type="text" id="nz" placeholder="Nazwa zadania">
+                <input type="text" id="opis" placeholder="Opis">
+            </div>
+    
+            <div class="rozne">
+                <input type="date" id="start">
+    
+                <div class="select-menu">
+                    <div class="select-btn">
+                        <i class="icon-flag"></i>
+                        <span class="sBtn-text">Priorytet</span>
+                    </div>
+                
+                <ul class="options">
+                    <li class="option">
+                        <i class="icon-flag" style="color: red;"></i>
+                        <span class="option-text">Priorytet 1</span>
+                    </li>
+                    <li class="option">
+                        <i class="icon-flag" style="color: orange;"></i>
+                        <span class="option-text">Priorytet 2</span>
+                    </li>
+                    <li class="option">
+                        <i class="icon-flag" style="color: yellow;"></i>
+                        <span class="option-text">Priorytet 3</span>
+                    </li>
+                    <li class="option">
+                        <i class="icon-flag" style="color: blue;"></i>
+                        <span class="option-text">Priorytet 4</span>
+                    </li>
+                </ul>
+            </div>
+    
+            </div>
+    
+            <div class="przyciski">
+                <button id="anuluj" onclick="ukryjDiv()">Anuluj</button>
+                <button id="addBtn">Dodaj zadanie</button>
+            </div>
+        </div>
+    </div>
+   
+    <script src="script.js"></script>
+
+    <script>
+        const cont = document.querySelector('.cont');
+        const te = document.getElementById('te');
+        const butt = document.getElementById('addBtn');
+        let wynik = 1;
+        te.style.opacity = '0';
+
+        butt.addEventListener('click', function(){
+            te.textContent = wynik;
+            te.style.opacity = '1'
+
+            te.style.top = '20%';
+          setTimeout(() =>{
+            te.style.opacity = '0';
+            te.style.top = '-10%';
+          }, 500)  
+        })
+
+    </script>
+</body>
+</html>
